@@ -1,19 +1,32 @@
 {config, pkgs, ...}:
 {
+  # i18n = {
+  #   consoleFont = "Lat2-Terminus16";
+  #   defaultLocale = "en_GB.UTF-8";
+  #   consoleKeyMap = "gb";
+  # };
+  # time.timeZone = "GB";
+
   services = {
     xserver = {
       enable = true;
       layout = "gb";
       xkbVariant = "mac";
-      displayManager.auto.enable = true;
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
+      windowManager = {
+        default = "i3";
+        i3 = {
+          enable = true;
+          # package = pkgs.i3-gaps;
+        };
       };
     };
   };
 
-  services.xserver.windowManager.default = "i3";
+  users.mutableUsers = false;
+
+  environment.systemPackages = with pkgs; [
+    vim
+  ];
 
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>

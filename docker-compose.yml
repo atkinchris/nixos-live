@@ -6,3 +6,7 @@ services:
     privileged: true
     volumes:
       - ./output:/output
+      - cache:/cache
+
+volumes:
+  cache:
