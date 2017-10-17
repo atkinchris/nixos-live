@@ -1,16 +1,11 @@
-# This module defines a small NixOS installation CD.  It does not
-# contain any graphical stuff.
 {config, pkgs, ...}:
 {
   services = {
-    compton = {
-      enable = true;
-      fade = true;
-    };
-
     xserver = {
       enable = true;
-      displayManager.lightdm.enable = true;
+      layout = "gb";
+      xkbVariant = "mac";
+      displayManager.auto.enable = true;
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
