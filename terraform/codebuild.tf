@@ -8,8 +8,7 @@ resource "aws_codebuild_project" "project" {
   }
 
   cache {
-    type     = "S3"
-    location = "${aws_s3_bucket.cache_bucket.bucket}"
+    type = "NO_CACHE"
   }
 
   environment {
