@@ -14,7 +14,7 @@ resource "aws_codebuild_project" "project" {
 
   environment {
     compute_type    = "BUILD_GENERAL1_SMALL"
-    image           = "aws/codebuild/ubuntu-base:14.04"
+    image           = "${aws_ecr_repository.repository.repository_url}:latest"
     type            = "LINUX_CONTAINER"
     privileged_mode = true
   }

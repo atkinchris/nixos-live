@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - sh ./build.sh
+
+artifacts:
+  files:
+    - "/output/*"
+  discard-paths: yes
+
+cache:
+  paths:
+    - "/cache/**/*"

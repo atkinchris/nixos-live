@@ -20,6 +20,11 @@ data "aws_iam_policy_document" "assume_role_policy" {
   }
 }
 
+resource "aws_iam_role_policy_attachment" "ecr_policy_attachment" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  role       = "${aws_iam_role.role.id}"
+}
+
 resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
   policy_arn = "${aws_iam_policy.role_policy.arn}"
   role       = "${aws_iam_role.role.id}"
