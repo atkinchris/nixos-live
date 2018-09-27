@@ -9,7 +9,3 @@ artifacts:
   files:
     - "/output/*"
   discard-paths: yes
-
-cache:
-  paths:
-    - "/nix/store/**/*"
