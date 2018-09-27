@@ -16,8 +16,7 @@ fi
 
 nix-build \
   '<nixpkgs/nixos>' \
-  --quiet \
   -A config.system.build.isoImage \
-  -I nixos-config=config.nix \
+  -I nixos-config=config.nix
 
 mv $STORE_DIR/*.iso/iso/*.iso /output
