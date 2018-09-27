@@ -20,9 +20,10 @@ resource "aws_codebuild_project" "project" {
   }
 
   source {
-    buildspec = "buildspec.yml"
-    type      = "GITHUB"
-    location  = "https://github.com/atkinchris/nixos-live"
+    buildspec       = "buildspec.yml"
+    type            = "GITHUB"
+    location        = "https://github.com/atkinchris/nixos-live.git"
+    git_clone_depth = 1
   }
 
   tags = "${merge(
