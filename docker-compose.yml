@@ -2,10 +2,10 @@ version: "2"
 
 services:
   builder:
-    build: ../
+    build: .
     privileged: true
     volumes:
-      - ../output:/output
+      - ./output:/output
       - cache:/cache
 
 volumes:

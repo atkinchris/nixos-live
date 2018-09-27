@@ -11,7 +11,7 @@ function on_exit {
 trap on_exit EXIT
 
 if [ "$(ls -A $CACHE_DIR)" ]; then
-  cp $CACHE_DIR/* STORE_DIR
+  cp -r $CACHE_DIR/* $STORE_DIR
 fi
 
 nix-build \
