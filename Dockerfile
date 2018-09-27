@@ -6,4 +6,4 @@ RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs && \
 VOLUME ["/output", "/cache"]
 ADD . /
 
-ENTRYPOINT [ "sh", "./build.sh" ]
+ENTRYPOINT [ "sh", "./scripts/build.sh" ]
