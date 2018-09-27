@@ -13,7 +13,7 @@ resource "aws_codebuild_project" "project" {
   }
 
   environment {
-    compute_type    = "BUILD_GENERAL1_SMALL"
+    compute_type    = "BUILD_GENERAL1_LARGE"
     image           = "${aws_ecr_repository.repository.repository_url}:latest"
     type            = "LINUX_CONTAINER"
     privileged_mode = true

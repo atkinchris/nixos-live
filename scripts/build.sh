@@ -5,7 +5,7 @@ CACHE_DIR="/cache"
 STORE_DIR="/nix/store"
 
 function on_exit {
-  cp $STORE_DIR/* $CACHE_DIR
+  cp -r $STORE_DIR/* $CACHE_DIR
 }
 
 trap on_exit EXIT
