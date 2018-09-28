@@ -1,35 +1,36 @@
-{config, pkgs, ...}:
-{
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   defaultLocale = "en_GB.UTF-8";
-  #   consoleKeyMap = "gb";
-  # };
-  # time.timeZone = "GB";
+# https://nixos.org/nixos/options.html
+{ config, lib, pkgs, ... }:
 
-  services = {
-    xserver = {
+with lib;
+
+{
+  imports = [
+    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+    <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+  ];
+
+  time.timeZone = "Europe/London";
+
+  services.xserver = {
+    enable = true;
+
+    layout = "gb";
+    xkbVariant = "mac";
+
+    desktopManager.gnome3.enable = true;
+    displayManager.gdm.autoLogin = {
       enable = true;
-      layout = "gb";
-      xkbVariant = "mac";
-      windowManager = {
-        default = "i3";
-        i3 = {
-          enable = true;
-          # package = pkgs.i3-gaps;
-        };
-      };
+      user = "root";
     };
   };
 
   users.mutableUsers = false;
 
+  networking.networkmanager.enable = true;
+  networking.wireless.enable = mkForce false;
+  powerManagement.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
-  ];
-
-  imports = [
-    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-    <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
   ];
 }
